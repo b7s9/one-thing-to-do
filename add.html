@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <link rel="stylesheet" href="style/minireset.min.css" /> -->
+    <link rel="stylesheet" href="style/main.css" />
+    <title>Add Thing to Do</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="add.html">Add more to do</a></li>
+        <li>
+          <a href="https://b7s9.com" target="blank" rel="noopener noreferrer"
+            >Credits</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Add Thing to Do</h1>
+      <form action="" id="new-entry">
+        <fieldset id="nice">
+          <div class="formcontrol">
+            <label for="nice-comment"
+              >Say something nice to yourself, first!</label
+            ><br />
+            <textarea
+              name="nice-comment"
+              id="nice-comment"
+              cols="40"
+              rows="8"
+              autocomplete="off"
+            ></textarea>
+          </div>
+        </fieldset>
+        <fieldset id="todo">
+          <div class="formcontrol">
+            <label for="todo-title">What do you need to do?</label>
+            <br />
+            <textarea
+              name="todo-title"
+              id="todo-title"
+              cols="40"
+              rows="8"
+              autocomplete="off"
+            ></textarea>
+          </div>
+
+          <div class="formcontrol">
+            <label for="todo-date">When is it due?</label>
+            <input
+              type="date"
+              name="todo-date"
+              id="todo-date"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="formcontrol">
+            <label for="todo-priority">How important is it?</label>
+            <select name="todo-priority" id="todo-priority">
+              <option value="2">High</option>
+              <option selected value="1">Medium</option>
+              <option value="0">Low</option>
+            </select>
+          </div>
+        </fieldset>
+        <input type="submit" value="submit" />
+      </form>
+    </main>
+
+    <script src="js/formhandler.js"></script>
+  </body>
+</html>
