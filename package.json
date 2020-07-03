@@ -1,0 +1,22 @@
+{
+  "name": "one-thing-to-do",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b7s9/one-thing-to-do.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/b7s9/one-thing-to-do/issues"
+  },
+  "homepage": "https://github.com/b7s9/one-thing-to-do#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
