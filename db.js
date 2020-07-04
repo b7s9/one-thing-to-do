@@ -47,8 +47,6 @@ function _countFiles(directory) {
 // --------------------------------------------------------
 // TODO
 // --------------------------------------------------------
-// todoFiles = _countFiles(todoDirectory);
-
 /**
  * Gets a random todo as json parsed object
  * @param {function} callback 
@@ -95,17 +93,7 @@ function _writeTodo(data, callback = () => { }) {
 // --------------------------------------------------------
 // NICE
 // --------------------------------------------------------
-// niceFiles = _countFiles(niceDirectory);
-
 function _getNice(callback = () => { }) {
-	// only use this if parameterizing index of get
-	// let file = '';
-	// if (index > -1) {
-	// 	file = files[index];
-	// } else {
-	// 	file = _getRandomItemInArray(files);
-	// }
-
 	niceFiles = _countFiles(niceDirectory);
 
 	let file = _getRandomItemInArray(niceFiles);
@@ -116,12 +104,8 @@ function _getNice(callback = () => { }) {
 }
 
 function _writeNice(data, callback = () => { }) {
-
 	todoFiles = _countFiles(niceDirectory);
-
-	let index = 0;
-	// index = (todoFiles.length) > 0 ? todoFiles.length + 1 : todoFiles.length;
-	index = todoFiles.length;
+	let index = todoFiles.length;
 
 	const filename = niceDirectory + '' + index + '.json';
 	fs.writeFile(filename, data, 'utf8', err => {
