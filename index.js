@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const formidable = require('express-formidable');
 const http = require("http").createServer(app);
 const port = process.env.PORT || 3000;
 const db = require('./db.js');
 
-
-
-
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(formidable());
 
 let tempData = {
 	"title": "Finish this app",
@@ -51,11 +54,9 @@ app.get('/get', function (req, res) {
 
 app.post('/post', function (req, res) {
 	console.log('Incoming Post request:')
-	console.log(req);
+	console.log(req.body);
+	res.send(req.body);
 });
-
-// or do the api as 'todo', 'nice'
-// or do the api as all in one endpoint
 
 http.listen(port, function () {
 	console.log(`listening on /:${port}`);
