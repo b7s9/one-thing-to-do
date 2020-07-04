@@ -8,21 +8,27 @@ function _getRandomItemInArray(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// --------------------------------------------------------
-// TODO
-// --------------------------------------------------------
-
-_countTodos(todoDirectory);
-function _countTodos(directory) {
+/**
+ * Counts the number of json files in a directory
+ * @param {String} directory Path to data files
+ * @returns {Array} Array
+ */
+function _countFiles(directory) {
 	// reset array (this method will be called multiple times)
-	todoFiles = [];
+	let fileArr = [];
 
 	// must be synchronous since this loads initial "database"
 	fs.readdirSync(directory).forEach(file => {
-		file.match(/^[0-9]/) && todoFiles.push(file);
+		file.match(/^[0-9]/) && fileArr.push(file);
 	});
-	todoFileLength = todoFiles.length
+
+	return fileArr;
 }
+
+// --------------------------------------------------------
+// TODO
+// --------------------------------------------------------
+// todoFiles = _countFiles(todoDirectory);
 
 /**
  * Gets a random todo as json parsed object
@@ -36,6 +42,8 @@ function _getTodo(callback = () => { }) {
 	// } else {
 	// 	file = _getRandomItemInArray(files);
 	// }
+
+	todoFiles = _countFiles(todoDirectory);
 
 	let file = _getRandomItemInArray(todoFiles);
 	fs.readFile(todoDirectory + '' + file, 'utf8', function (err, data) {
@@ -62,7 +70,25 @@ function _writeTodo(data, callback = () => { }) {
 // --------------------------------------------------------
 // NICE
 // --------------------------------------------------------
+// niceFiles = _countFiles(niceDirectory);
 
+function _getNice(callback = () => { }) {
+	// only use this if parameterizing index of get
+	// let file = '';
+	// if (index > -1) {
+	// 	file = files[index];
+	// } else {
+	// 	file = _getRandomItemInArray(files);
+	// }
+
+	niceFiles = _countFiles(niceDirectory);
+
+	let file = _getRandomItemInArray(niceFiles);
+	fs.readFile(niceDirectory + '' + file, 'utf8', function (err, data) {
+		if (err) throw err;
+		callback(data)
+	});
+}
 
 // --------------------------------------------------------
 // EXPORTS
