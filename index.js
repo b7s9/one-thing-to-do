@@ -40,8 +40,6 @@ app.get('/get', function (req, res) {
 		db.getTodo(todo => {
 			res.type('json');
 			res.end(todo)
-			// console.log(__dirname + '/' + todo)
-			// res.sendFile(__dirname + '/' + todo);
 			console.log(res.headersSent)
 		});
 	} else if (req.query.type === 'nice') {
@@ -51,9 +49,9 @@ app.get('/get', function (req, res) {
 	}
 });
 
-app.get('/post', function (req, res) {
+app.post('/post', function (req, res) {
 	console.log('Incoming Post request:')
-	console.log(req.query.type)
+	console.log(req);
 });
 
 // or do the api as 'todo', 'nice'

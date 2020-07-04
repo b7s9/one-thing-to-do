@@ -18,7 +18,9 @@ form.addEventListener("formdata", (e) => {
   }
 
   // submit the data via XHR
-  // var request = new XMLHttpRequest();
-  // request.open("POST", "/formHandler");
-  // request.send(data);
+  var request = new XMLHttpRequest();
+  console.log(request)
+  request.open("POST", "/post");
+  request.send(data);
+  console.log(request)
 });
