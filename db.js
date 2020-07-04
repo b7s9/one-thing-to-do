@@ -1,8 +1,27 @@
 const fs = require('fs');
+const path = require('path');
 const todoDirectory = 'data/todo-data/';
 const niceDirectory = 'data/nice-data/';
 let todoFiles = [];
 let niceFiles = [];
+
+
+function ensureDirectoryExistence(filePath) {
+	var dirname = path.dirname(filePath);
+	if (fs.existsSync(dirname)) {
+		return true;
+	}
+	ensureDirectoryExistence(dirname);
+	fs.mkdirSync(dirname);
+}
+console.log('todo directory: ' + ensureDirectoryExistence(todoDirectory + '_db.json'));
+console.log('nice directory: ' + ensureDirectoryExistence(niceDirectory + '_db.json'));
+
+// fs.promises.mkdir(path.dirname(todoDirectory + '_db.txt'), { recursive: true })
+// 	.then(x => fs.promises.writeFile(todoDirectory + '_db.txt', "database initialized"))
+
+// fs.promises.mkdir(path.dirname(niceDirectory + '_db.txt'), { recursive: true })
+// 	.then(x => fs.promises.writeFile(niceDirectory + '_db.txt', "database initialized"))
 
 function _getRandomItemInArray(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
@@ -58,11 +77,17 @@ function _getTodo(callback = () => { }) {
  * @param {function} callback what to do once it's done
  */
 function _writeTodo(data, callback = () => { }) {
-	let index = todoFiles.length + 1;
+
+	todoFiles = _countFiles(todoDirectory);
+
+	let index = 0;
+	// index = (todoFiles.length) > 0 ? todoFiles.length + 1 : todoFiles.length;
+	index = todoFiles.length;
+
 	const filename = todoDirectory + '' + index + '.json';
 	fs.writeFile(filename, data, 'utf8', err => {
 		if (err) throw err;
-		_countTodos(todoDirectory);
+		_countFiles(todoDirectory);
 		callback(filename)
 	});
 }
@@ -90,9 +115,28 @@ function _getNice(callback = () => { }) {
 	});
 }
 
+function _writeNice(data, callback = () => { }) {
+
+	todoFiles = _countFiles(niceDirectory);
+
+	let index = 0;
+	// index = (todoFiles.length) > 0 ? todoFiles.length + 1 : todoFiles.length;
+	index = todoFiles.length;
+
+	const filename = niceDirectory + '' + index + '.json';
+	fs.writeFile(filename, data, 'utf8', err => {
+		if (err) throw err;
+		_countFiles(niceDirectory);
+		callback(filename)
+	});
+}
+
 // --------------------------------------------------------
 // EXPORTS
 // --------------------------------------------------------
 
 module.exports.getTodo = _getTodo;
 module.exports.writeTodo = _writeTodo;
+
+module.exports.getNice = _getNice;
+module.exports.writeNice = _writeNice;

@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const formidable = require('express-formidable');
+// const formidable = require('express-formidable');
 const http = require("http").createServer(app);
 const port = process.env.PORT || 3000;
 const db = require('./db.js');
@@ -11,14 +11,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.json());
 // app.use(formidable());
 
-let tempData = {
-	"title": "Finish this app",
-	"date": "2020-8-1",
-	"priority": "1"
-};
+// let tempData = {
+// 	"message": "You're a very sensitive person"
+// }
 
-// db.writeTodo(JSON.stringify(tempData), (filename) => {
-// 	console.log('new todo: ' + filename)
+// db.writeNice(JSON.stringify(tempData), (filename) => {
+// 	console.log('new nice: ' + filename)
 // });
 
 let tempNice = 'you have an awesome support network';
@@ -38,15 +36,20 @@ app.get('/add', function (req, res) {
 // --------------------------------------------------------
 
 app.get('/get', function (req, res) {
-	console.log('Incoming Get request:')
 	if (req.query.type === 'todo') {
+		console.log('Incoming Todo request:')
 		db.getTodo(todo => {
 			res.type('json');
 			res.end(todo)
 			console.log(res.headersSent)
 		});
 	} else if (req.query.type === 'nice') {
-
+		console.log('Incoming Nice request:')
+		db.getNice(nice => {
+			res.type('json');
+			res.end(nice)
+			console.log(res.headersSent)
+		});
 	} else {
 		// deny request
 	}

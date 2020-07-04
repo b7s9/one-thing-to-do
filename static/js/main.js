@@ -43,6 +43,11 @@ getData("/get?type=todo").then((data) => {
   todoPriority.innerHTML = data.priority;
 });
 
+getData("/get?type=nice").then((data) => {
+  console.log(data); // JSON data parsed by `data.json()` call
+  niceMessage.innerHTML = data.message;
+});
+
 // getData("/get?type=nice").then((data) => {
 //   console.log(data); // JSON data parsed by `data.json()` call
 //   niceMessage.innerHTML = niceMsg.message;
