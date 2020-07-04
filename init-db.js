@@ -1,4 +1,9 @@
-
+const initData = {
+	"db": {
+		"todo-data": [],
+		"nice-data": []
+	}
+};
 
 const _initializeJSON = (location, data) => {
 	try {
