@@ -65,7 +65,6 @@ function _countFiles(directory) {
 		// ignore .DS_Store file 
 		file.match(/^[0-9a-zA-Z]/) && fileArr.push(file);
 	});
-	console.log(fileArr)
 	return fileArr;
 }
 

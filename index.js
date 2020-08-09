@@ -25,18 +25,14 @@ app.get('/add', function (req, res) {
 
 app.get('/get', function (req, res) {
 	if (req.query.type === 'todo') {
-		console.log('Incoming Todo request:')
 		db.getTodo(todo => {
 			res.type('json');
 			res.end(todo)
-			console.log('todo sent= ' + res.headersSent)
 		});
 	} else if (req.query.type === 'nice') {
-		console.log('Incoming Nice request:')
 		db.getNice(nice => {
 			res.type('json');
 			res.end(nice)
-			console.log('nice sent= ' + res.headersSent)
 		});
 	} else {
 		// deny request
@@ -49,8 +45,8 @@ app.get('/post', function (req, res) {
 })
 
 app.post('/post', function (req, res) {
-	console.log('Incoming Post request:')
 	const data = req.body
+	console.log('Incoming Post request:')
 	console.log(data)
 
 	// need to check for empty strings and date 
