@@ -8,18 +8,6 @@ const db = require('./db.js');
 
 // app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.json());
-// app.use(formidable());
-
-// let tempData = {
-// 	"message": "You're a very sensitive person"
-// }
-
-// db.writeNice(JSON.stringify(tempData), (filename) => {
-// 	console.log('new nice: ' + filename)
-// });
-
-let tempNice = 'you have an awesome support network';
 
 app.use('/static', express.static(__dirname + '/static'));
 
@@ -41,24 +29,50 @@ app.get('/get', function (req, res) {
 		db.getTodo(todo => {
 			res.type('json');
 			res.end(todo)
-			console.log(res.headersSent)
+			console.log('todo sent= ' + res.headersSent)
 		});
 	} else if (req.query.type === 'nice') {
 		console.log('Incoming Nice request:')
 		db.getNice(nice => {
 			res.type('json');
 			res.end(nice)
-			console.log(res.headersSent)
+			console.log('nice sent= ' + res.headersSent)
 		});
 	} else {
 		// deny request
 	}
 });
 
+app.get('/post', function (req, res) {
+	console.log('get a post request??')
+	res.send('you fucked up')
+})
+
 app.post('/post', function (req, res) {
 	console.log('Incoming Post request:')
-	console.log(req.body);
-	res.send(req.body);
+	const data = req.body
+	console.log(data)
+
+	// need to check for empty strings and date 
+	// set up todo JSON 
+	const todo = {
+		title: data['todo-title'],
+		date: data['todo-date'],
+		priority: data['todo-priority']
+	}
+	db.writeTodo(JSON.stringify(todo), () => {
+		console.log('write todo')
+	})
+
+	// set up nice JSON 
+	const nice = {
+		message: data['nice-comment']
+	}
+	db.writeNice(JSON.stringify(nice), () => {
+		console.log('write nice')
+	})
+
+	res.sendFile(__dirname + '/index.html')
 });
 
 http.listen(port, function () {

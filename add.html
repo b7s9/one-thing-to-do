@@ -22,18 +22,20 @@
   </nav>
   <main>
     <h1>Add Thing to Do</h1>
-    <form action="" id="new-entry">
+    <form action="post/" id="new-entry" method="POST">
       <fieldset id="nice">
         <div class="formcontrol">
           <label for="nice-comment">Say something nice to yourself, first!</label><br />
-          <textarea name="nice-comment" id="nice-comment" cols="40" rows="8" autocomplete="off"></textarea>
+          <textarea name="nice-comment" id="nice-comment" cols="40" rows="8" autocomplete="off" minlength="1"
+            required></textarea>
         </div>
       </fieldset>
       <fieldset id="todo">
         <div class="formcontrol">
           <label for="todo-title">What do you need to do?</label>
           <br />
-          <textarea name="todo-title" id="todo-title" cols="40" rows="8" autocomplete="off"></textarea>
+          <textarea name="todo-title" id="todo-title" cols="40" rows="8" autocomplete="off" minlength="1"
+            required></textarea>
         </div>
 
         <div class="formcontrol">
