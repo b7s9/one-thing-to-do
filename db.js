@@ -27,6 +27,30 @@ function _getRandomItemInArray(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
+function _generateHash() {
+	let str = '';
+	// numbers = 48-57
+	// uppercase = 65-90
+	// lowercase = 97-122
+	for (let i = 0; i < 20; i++) {
+		let char = ''
+		let charCode = 0;
+		if (Math.floor(Math.random() * 2)) {
+			charCode = Math.floor(Math.random() * 10)
+			char = String.fromCharCode(charCode + 48)
+		} else {
+			charCode = Math.floor(Math.random() * 26)
+			if (Math.floor(Math.random() * 2)) {
+				char = String.fromCharCode(charCode + 97)
+			} else {
+				char = String.fromCharCode(charCode + 65)
+			}
+		}
+		str += char
+	}
+	return str;
+}
+
 /**
  * Counts the number of json files in a directory
  * @param {String} directory Path to data files
@@ -38,9 +62,10 @@ function _countFiles(directory) {
 
 	// must be synchronous since this loads initial "database"
 	fs.readdirSync(directory).forEach(file => {
-		file.match(/^[0-9]/) && fileArr.push(file);
+		// ignore .DS_Store file 
+		file.match(/^[0-9a-zA-Z]/) && fileArr.push(file);
 	});
-
+	console.log(fileArr)
 	return fileArr;
 }
 
@@ -75,14 +100,7 @@ function _getTodo(callback = () => { }) {
  * @param {function} callback what to do once it's done
  */
 function _writeTodo(data, callback = () => { }) {
-
-	todoFiles = _countFiles(todoDirectory);
-
-	let index = 0;
-	// index = (todoFiles.length) > 0 ? todoFiles.length + 1 : todoFiles.length;
-	index = todoFiles.length;
-
-	const filename = todoDirectory + '' + index + '.json';
+	const filename = todoDirectory + _generateHash() + '.json';
 	fs.writeFile(filename, data, 'utf8', err => {
 		if (err) throw err;
 		_countFiles(todoDirectory);
@@ -104,10 +122,7 @@ function _getNice(callback = () => { }) {
 }
 
 function _writeNice(data, callback = () => { }) {
-	todoFiles = _countFiles(niceDirectory);
-	let index = todoFiles.length;
-
-	const filename = niceDirectory + '' + index + '.json';
+	const filename = niceDirectory + _generateHash() + '.json';
 	fs.writeFile(filename, data, 'utf8', err => {
 		if (err) throw err;
 		_countFiles(niceDirectory);
