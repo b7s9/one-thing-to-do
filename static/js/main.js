@@ -5,20 +5,6 @@ const niceMessage = document.querySelector("#nice-viewer h2");
 
 console.log("main.js");
 
-// let data = getTodo();
-
-// function getTodo() {
-//   fetch("/get?type=todo")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log(data);
-//       return data;
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }
-
 async function getData(url = "") {
   // Default options are marked with *
   const response = await fetch(url, {
@@ -47,8 +33,3 @@ getData("/get?type=nice").then((data) => {
   console.log(data); // JSON data parsed by `data.json()` call
   niceMessage.innerHTML = data.message;
 });
-
-// getData("/get?type=nice").then((data) => {
-//   console.log(data); // JSON data parsed by `data.json()` call
-//   niceMessage.innerHTML = niceMsg.message;
-// });

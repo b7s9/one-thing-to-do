@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-// const formidable = require('express-formidable');
 const http = require("http").createServer(app);
 const port = process.env.PORT || 3000;
 const db = require('./db.js');
