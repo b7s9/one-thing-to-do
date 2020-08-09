@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <link rel="stylesheet" href="style/minireset.min.css" /> -->
-    <link rel="stylesheet" href="style/main.css" />
-    <title>One Thing to Do</title>
-  </head>
-  <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="add.html">Add more to do</a></li>
-        <li>
-          <a href="https://b7s9.com" target="blank" rel="noopener noreferrer"
-            >Credits</a
-          >
-        </li>
-      </ul>
-    </nav>
-    <main>
-      <h1>One Thing to Do</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <div id="todo-viewer">
-        <p class="intro">You should try to:</p>
-        <h2></h2>
+  <!-- <link rel="stylesheet" href="style/minireset.min.css" /> -->
+  <link rel="stylesheet" href="static/style/main.css" />
+  <title>One Thing to Do</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/add">Add more to do</a></li>
+      <li>
+        <a href="https://b7s9.com" target="blank" rel="noopener noreferrer">Credits</a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <h1>One Thing to Do</h1>
+
+    <div id="todo-viewer">
+      <p class="intro">You should try to:</p>
+      <h2></h2>
+      <div class="data" hidden>
+        <p class="date">
+          <strong>Due:</strong> <span class="data"></span>
+        </p>
+        <p class="priority">
+          <strong>Priority:</strong> <span class="data"></span>
+        </p>
       </div>
-      <hr />
-      <div id="nice-viewer">
-        <p class="intro">oh by the way...</p>
-        <h2></h2>
-      </div>
-    </main>
+    </div>
+    <hr />
+    <div id="nice-viewer">
+      <p class="intro">oh by the way...</p>
+      <h2></h2>
+    </div>
+  </main>
 
-    <script src="js/main.js"></script>
-  </body>
+  <script src="static/js/main.js"></script>
+</body>
+
 </html>

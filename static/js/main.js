@@ -1,19 +1,9 @@
 const todoMessage = document.querySelector("#todo-viewer h2");
+const todoDate = document.querySelector("#todo-viewer div.data .date span.data");
+const todoPriority = document.querySelector("#todo-viewer div.data .priority span.data");
 const niceMessage = document.querySelector("#nice-viewer h2");
 
 console.log("main.js");
-let data = getData();
-
-function getData() {
-  fetch("./data/todo-data.json")
-    .then((response) => response.json())
-    .then((data) => {
-      return data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-}
 
 async function getData(url = "") {
   // Default options are marked with *
@@ -32,20 +22,14 @@ async function getData(url = "") {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-function getTodo(data) {
-  return getRandomItemInArray(data["todo-data"]);
-}
-
-function getRandomItemInArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-getData("./data/data.json").then((data) => {
+getData("/get?type=todo").then((data) => {
   console.log(data); // JSON data parsed by `data.json()` call
+  todoMessage.innerHTML = data.title;
+  todoDate.innerHTML = data.date;
+  todoPriority.innerHTML = data.priority;
+});
 
-  let todo = getRandomItemInArray(data.db["todo-data"]);
-  todoMessage.innerHTML = todo.title;
-
-  let niceMsg = getRandomItemInArray(data.db["nice-data"]);
-  niceMessage.innerHTML = niceMsg.message;
+getData("/get?type=nice").then((data) => {
+  console.log(data); // JSON data parsed by `data.json()` call
+  niceMessage.innerHTML = data.message;
 });
