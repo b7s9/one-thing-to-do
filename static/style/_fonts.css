@@ -1,5 +1,13 @@
 /* signika-300 - latin */
 @font-face {
+	font-family: 'HanziPen';
+	font-style: normal;
+	font-weight: 400;
+	src: local('HanziPen SC'), local('HanziPen'),
+		url('./fonts/hanzipen-sc-regular.woff') format('woff');
+}
+
+@font-face {
 	font-family: 'Signika';
 	font-style: normal;
 	font-weight: 300;

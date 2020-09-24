@@ -12,30 +12,20 @@
 
 <body>
   <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/add">Add more to do</a></li>
-      <li>
-        <a href="https://b7s9.com" target="blank" rel="noopener noreferrer">Credits</a>
-      </li>
-    </ul>
+    <div class="logo">
+      <a href="/">One Thing to Do</a>
+    </div>
+    <div class="credits">
+      <a href="https://b7s9.com" target="blank" rel="noopener noreferrer">Credits</a>
+    </div>
   </nav>
   <main>
-    <h1>Add Thing to Do</h1>
     <form action="post/" id="new-entry" method="POST">
-      <fieldset id="nice">
-        <div class="formcontrol">
-          <label for="nice-comment">Say something nice to yourself, first!</label><br />
-          <textarea name="nice-comment" id="nice-comment" cols="40" rows="8" autocomplete="off" minlength="1"
-            required></textarea>
-        </div>
-      </fieldset>
       <fieldset id="todo">
         <div class="formcontrol">
           <label for="todo-title">What do you need to do?</label>
           <br />
-          <textarea name="todo-title" id="todo-title" cols="40" rows="8" autocomplete="off" minlength="1"
-            required></textarea>
+          <textarea name="todo-title" id="todo-title" rows="3" autocomplete="off" minlength="1" required></textarea>
         </div>
 
         <div class="formcontrol">
@@ -52,7 +42,13 @@
           </select>
         </div>
       </fieldset>
-      <input type="submit" value="submit" />
+      <fieldset id="nice">
+        <div class="formcontrol">
+          <label for="nice-comment">Say something nice to yourself, first!</label><br />
+          <textarea name="nice-comment" id="nice-comment" rows="3" autocomplete="off" minlength="1" required></textarea>
+        </div>
+      </fieldset>
+      <input type="submit" value="Let's Do This!" />
     </form>
   </main>
 
