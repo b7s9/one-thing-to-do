@@ -31,11 +31,8 @@ nav a {
   text-decoration: none;
 }
 
+nav .logo a,
 nav .credits a {
-  color: var(--blue-medium)
-}
-
-nav .logo a {
   color: var(--blue-dark)
 }
 
@@ -51,6 +48,12 @@ main {
 
 main.home {
   margin: 4rem auto;
+}
+
+@media screen and (min-width: 480px) {
+  main.home {
+    margin-top: 8rem;
+  }
 }
 
 #todo-viewer,
@@ -69,7 +72,7 @@ label {
 h2 {
   color: var(--brown-dark);
   font-family: var(--ff-script);
-  font-size: 1.375rem;
+  font-size: 1.6rem;
   font-weight: normal;
   margin: 0.25rem;
   padding: 0;
@@ -77,7 +80,7 @@ h2 {
 
 @media screen and (min-width: 480px) {
   h2 {
-    font-size: 2.25rem;
+    font-size: 2.8rem;
   }
 }
 
@@ -90,30 +93,45 @@ aside {
   display: block;
   padding: 1rem;
   margin: 0;
-}
-
-@media screen and (min-width: 480px) {
-  aside {
-    float: right;
-    margin: 0 1rem;
-  }
-
-  aside a {
-    width: 8rem;
-  }
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 aside a {
-  display: block;
-  font-size: 1.25rem;
+  color: var(--blue-medium);
+  border-bottom: 1px solid transparent;
+  font-size: 1rem;
   padding: 0.5rem 0;
   text-align: right;
   text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 aside a:focus,
 aside a:hover {
   text-decoration: underline;
+}
+
+aside a svg {
+  padding-left: 0.6rem;
+  height: 2rem;
+  stroke: var(--blue-medium);
+}
+
+@media screen and (min-width: 480px) {
+  aside a {
+    float: right;
+    font-size: 1.6rem;
+    margin: 0 1rem;
+  }
+
+  aside a svg {
+    height: 2.5rem;
+  }
 }
 
 /************************************************/
@@ -161,4 +179,23 @@ input[type="submit"] {
 input[type="submit"]:hover,
 input[type="submit"]:focus {
   background: var(--blue-light);
+}
+
+select {
+  appearance: none;
+}
+
+select+div.icon {
+  background: url(./ui/dropdown.svg) no-repeat center center;
+  position: absolute;
+  height: 2.25rem;
+  width: 2.25rem;
+  right: 2rem;
+  margin-top: -3rem;
+}
+
+@media screen and (min-width: 480px) {
+  select+div.icon {
+    display: none;
+  }
 }
