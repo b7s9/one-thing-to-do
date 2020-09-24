@@ -110,6 +110,11 @@ aside {
   width: 100%;
 }
 
+aside div.wrapper {
+  margin: 0 auto;
+  max-width: 52rem;
+}
+
 aside a {
   color: var(--blue-medium);
   border-bottom: 1px solid transparent;
