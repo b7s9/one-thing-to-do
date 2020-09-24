@@ -1,6 +1,6 @@
 # One Thing to Do
-![index.html page](https://b7s9.com/assets/img/random/one-thing-to-do-3.png)
-![add.html page](https://b7s9.com/assets/img/random/one-thing-to-do-2.png)
+![index.html page](https://user-images.githubusercontent.com/19176695/94201425-f73a7700-fe89-11ea-84aa-aeb611f2e8c4.png)
+![add.html page](https://user-images.githubusercontent.com/19176695/94201428-f9043a80-fe89-11ea-9410-994ac2cd5500.png)
 
 ## Problem
 Todo lists are a helpful way of organizing the tasks that you need and/or want to do, but for people with ADHD/ADD, it can often be very difficult to actually find the motivation to check an item off that list. When the list gets too long, it can feel especially overwhelming.
