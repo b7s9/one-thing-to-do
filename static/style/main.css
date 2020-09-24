@@ -42,6 +42,18 @@ main {
   padding: 0 1rem;
 }
 
+a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size .4s;
+}
+
+a:hover {
+  background-size: 100% 1px;
+}
+
 /************************************************/
 /* VIEWER */
 /************************************************/
@@ -98,6 +110,11 @@ aside {
   width: 100%;
 }
 
+aside div.wrapper {
+  margin: 0 auto;
+  max-width: 52rem;
+}
+
 aside a {
   color: var(--blue-medium);
   border-bottom: 1px solid transparent;
@@ -111,11 +128,6 @@ aside a {
   justify-content: end;
 }
 
-aside a:focus,
-aside a:hover {
-  text-decoration: underline;
-}
-
 aside a svg {
   padding-left: 0.6rem;
   height: 2rem;
@@ -126,7 +138,8 @@ aside a svg {
   aside a {
     float: right;
     font-size: 1.6rem;
-    margin: 0 1rem;
+    margin: 0.5rem 1rem;
+    padding: 0;
   }
 
   aside a svg {
