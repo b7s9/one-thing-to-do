@@ -1,0 +1,5 @@
+{
+  "html.format.indentInnerHtml": false,
+  "html.format.wrapAttributes": "aligned-multiple",
+  "editor.detectIndentation": false
+}
