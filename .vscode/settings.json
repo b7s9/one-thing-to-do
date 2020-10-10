@@ -1,5 +1,7 @@
 {
   "html.format.indentInnerHtml": false,
   "html.format.wrapAttributes": "aligned-multiple",
-  "editor.detectIndentation": false
+  "editor.detectIndentation": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
 }
