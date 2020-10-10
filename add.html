@@ -2,58 +2,81 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- init  -->
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>One Thing to Do</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
 
-  <!-- <link rel="stylesheet" href="style/minireset.min.css" /> -->
-  <link rel="stylesheet" href="static/style/main.css" />
-  <title>Add Thing to Do</title>
+	<!-- required js -->
+	<script src="static/js/localforage.min.js"></script>
+	<script>
+		console.log('localforage is: ', localforage);
+
+	</script>
+
+	<!-- <script>
+      if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function (reg) {
+          console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+      }
+    </script> -->
+
+	<!-- style  -->
+	<link rel="stylesheet" href="static/style/minireset.min.css" />
+	<link rel="stylesheet" href="static/style/main.css" />
 </head>
 
 <body>
-  <nav>
-    <div class="logo">
-      <a href="index.html">One Thing to Do</a>
-    </div>
-    <div class="credits">
-      <a href="https://b7s9.com" target="blank" rel="noopener noreferrer">Credits</a>
-    </div>
-  </nav>
-  <main>
-    <form id="new-entry">
-      <fieldset id="todo">
-        <div class="formcontrol">
-          <label for="todo-title">What do you need to do?</label>
-          <br />
-          <textarea name="todo-title" id="todo-title" rows="3" autocomplete="off" minlength="1" required></textarea>
-        </div>
+	<nav>
+		<div class="logo">
+			<a href="index.html">One Thing to Do</a>
+		</div>
+		<div class="credits">
+			<a href="https://b7s9.com" target="blank" rel="noopener noreferrer">Credits</a>
+		</div>
+	</nav>
+	<main>
+		<form id="new-entry">
+			<fieldset id="todo">
+				<div class="formcontrol">
+					<label for="todo-title">What do you need to do?</label>
+					<br />
+					<textarea name="todo-title" id="todo-title" rows="3" autocomplete="off" minlength="1"
+							  required></textarea>
+				</div>
 
-        <div class="formcontrol">
-          <label for="todo-date">When is it due?</label>
-          <input type="date" name="todo-date" id="todo-date" autocomplete="off" />
-        </div>
+				<div class="formcontrol">
+					<label for="todo-date">When is it due?</label>
+					<input type="date" name="todo-date" id="todo-date" autocomplete="off" />
+				</div>
 
-        <div class="formcontrol">
-          <label for="todo-priority">How important is it?</label>
-          <select name="todo-priority" id="todo-priority">
-            <option value="2">High</option>
-            <option selected value="1">Medium</option>
-            <option value="0">Low</option>
-          </select>
-          <div class="icon"></div>
-        </div>
-      </fieldset>
-      <fieldset id="nice">
-        <div class="formcontrol">
-          <label for="nice-comment">Say something nice to yourself, first!</label><br />
-          <textarea name="nice-comment" id="nice-comment" rows="3" autocomplete="off" minlength="1" required></textarea>
-        </div>
-      </fieldset>
-      <input type="submit" value="Let's Do This!" />
-    </form>
-  </main>
+				<div class="formcontrol">
+					<label for="todo-priority">How important is it?</label>
+					<select name="todo-priority" id="todo-priority">
+						<option value="2">High</option>
+						<option selected value="1">Medium</option>
+						<option value="0">Low</option>
+					</select>
+					<div class="icon"></div>
+				</div>
+			</fieldset>
+			<fieldset id="nice">
+				<div class="formcontrol">
+					<label for="nice-comment">Say something nice to yourself, first!</label><br />
+					<textarea name="nice-comment" id="nice-comment" rows="3" autocomplete="off" minlength="1"
+							  required></textarea>
+				</div>
+			</fieldset>
+			<input type="submit" value="Let's Do This!" />
+		</form>
+	</main>
 
-  <script src="static/js/formhandler.js"></script>
+	<script src="static/js/formhandler.js"></script>
 </body>
 
 </html>

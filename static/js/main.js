@@ -22,14 +22,15 @@ async function getData(url = "") {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-getData("/get?type=todo").then((data) => {
-  console.log(data); // JSON data parsed by `data.json()` call
-  todoMessage.innerHTML = data.title;
-  todoDate.innerHTML = data.date;
-  todoPriority.innerHTML = data.priority;
-});
+//  this needs to fetch from cache 
+// getData("/get?type=todo").then((data) => {
+//   console.log(data); // JSON data parsed by `data.json()` call
+//   todoMessage.innerHTML = data.title;
+//   todoDate.innerHTML = data.date;
+//   todoPriority.innerHTML = data.priority;
+// });
 
-getData("/get?type=nice").then((data) => {
-  console.log(data); // JSON data parsed by `data.json()` call
-  niceMessage.innerHTML = data.message;
-});
+// getData("/get?type=nice").then((data) => {
+//   console.log(data); // JSON data parsed by `data.json()` call
+//   niceMessage.innerHTML = data.message;
+// });
