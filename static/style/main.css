@@ -33,7 +33,7 @@ nav a {
 
 nav .logo a,
 nav .credits a {
-  color: var(--blue-dark)
+  color: var(--blue-dark);
 }
 
 main {
@@ -47,10 +47,11 @@ a {
   background-position: 0 100%;
   background-repeat: no-repeat;
   background-size: 0 1px;
-  transition: background-size .4s;
+  transition: background-size 0.4s;
 }
 
-a:hover {
+a:hover,
+a:focus {
   background-size: 100% 1px;
 }
 
@@ -180,7 +181,11 @@ select {
   width: 100%;
 }
 
-input[type="submit"] {
+textarea:valid {
+  border: 2px solid green;
+}
+
+input[type='submit'] {
   color: var(--blue-dark);
   cursor: pointer;
   font-family: var(--ff-signika);
@@ -189,8 +194,8 @@ input[type="submit"] {
   transition: background-color 95ms ease-in-out;
 }
 
-input[type="submit"]:hover,
-input[type="submit"]:focus {
+input[type='submit']:hover,
+input[type='submit']:focus {
   background: var(--blue-light);
 }
 
@@ -198,7 +203,7 @@ select {
   appearance: none;
 }
 
-select+div.icon {
+select + div.icon {
   background: url(./ui/dropdown.svg) no-repeat center center;
   position: absolute;
   height: 2.25rem;
@@ -208,7 +213,26 @@ select+div.icon {
 }
 
 @media screen and (min-width: 480px) {
-  select+div.icon {
+  select + div.icon {
     display: none;
   }
+}
+
+#status-message.danger {
+  color: red;
+}
+
+#status-message.success {
+  color: green;
+}
+
+#status-box {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+#status-box a {
+  color: var(--blue-dark);
+  text-decoration: none;
 }
