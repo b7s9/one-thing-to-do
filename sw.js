@@ -1,4 +1,4 @@
-const version = '0.1.3';
+const version = '0.1.6';
 
 self.addEventListener('install', (event) => {
 	event.waitUntil(
@@ -8,20 +8,24 @@ self.addEventListener('install', (event) => {
 				'./index.html',
 				'./add.html',
 				'./offline.html',
-				'./favicon.ico',
+				'./site.webmanifest',
+				'./favicon.ico/favicon-16x16.png',
+				'./favicon.ico/favicon-32x32.png',
 				'./favicon.ico/android-chrome-192x192.png',
 				'./favicon.ico/android-chrome-512x512.png',
 				'./favicon.ico/apple-touch-icon.png',
-				'./static/',
-				'./static/js/',
 				'./static/js/formhandler.js',
 				'./static/js/main.js',
 				'./static/js/localforage.min.js',
-				'./static/style/',
 				'./static/style/main.css',
 				'./static/style/_fonts.css',
 				'./static/style/_variables.css',
+				'./static/style/fonts/HanziPenSC-W3-Proportional.woff',
+				'./static/style/fonts/signika-v10-latin-300.woff',
+				'./static/style/fonts/signika-v10-latin-700.woff',
 			]);
+		}).catch(function (err) {
+			console.log(err)
 		})
 	);
 });
@@ -43,38 +47,39 @@ self.addEventListener('fetch', function (event) {
 					cache.put(event.request, responseClone);
 				});
 				return response;
-			}).catch(function () {
+			}).catch(function (err) {
+				console.log(err)
 				// return caches.match('/sw-test/gallery/myLittleVader.jpg');
 			});
 		}
 	}));
 });
 
-// self.addEventListener('activate', function (evt) {
-// 	evt.waitUntil(
-// 		caches.keys().then((keyList) => {
-// 			return Promise.all(keyList.map((key) => {
-// 				if (key !== CACHE_NAME) {
-// 					console.log('[ServiceWorker] Removing old cache', key);
-// 					return caches.delete(key);
-// 				}
-// 			}));
-// 		})
-// 	);
-// 	if (evt.request.mode !== 'navigate') {
-// 		// Not a page navigation, bail.
-// 		return;
-// 	}
-// 	evt.respondWith(
-// 		fetch(evt.request)
-// 			.catch(() => {
-// 				return caches.open(CACHE_NAME)
-// 					.then((cache) => {
-// 						return cache.match('offline.html');
-// 					});
-// 			})
-// 	);
-// });
+self.addEventListener('activate', function (evt) {
+	evt.waitUntil(
+		caches.keys().then((keyList) => {
+			return Promise.all(keyList.map((key) => {
+				if (key !== version) {
+					console.log('[ServiceWorker] Removing old cache', key);
+					return caches.delete(key);
+				}
+			}));
+		})
+	);
+	if (evt.request.mode !== 'navigate') {
+		// Not a page navigation, bail.
+		return;
+	}
+	evt.respondWith(
+		fetch(evt.request)
+			.catch(() => {
+				return caches.open(version)
+					.then((cache) => {
+						return cache.match('offline.html');
+					});
+			})
+	);
+});
 
 
 

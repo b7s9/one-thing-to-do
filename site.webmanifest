@@ -1,7 +1,8 @@
 {
   "name": "One Thing to Do",
   "short_name": "One Thing",
-  "start_url": "./",
+  "scope": "/",
+  "start_url": "/",
   "description": "Reimagine your todo list",
   "orientation": "any",
   "icons": [
