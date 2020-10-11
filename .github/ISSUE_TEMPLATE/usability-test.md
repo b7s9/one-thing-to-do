@@ -32,7 +32,7 @@ assignees: ''
 <!-- e.g. I didn't expect to be able to breakup with my boyfriend through the app -->
 
 
-[ ] I would use this to replace my existing task management strategy.
+- [ ] I would use this to replace my existing task management strategy.
 
 
 ## Additional comments, criticism, or praise?
