@@ -16,9 +16,7 @@
 
 	<script>
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('./sw.js', {
-					scope: '/'
-				})
+			navigator.serviceWorker.register('/sw.js')
 				.then((reg) => {
 					// registration worked
 					console.log('Registration succeeded. Scope is ' + reg.scope);
@@ -55,8 +53,11 @@
 	</nav>
 	<main class="home">
 		<div id="todo-viewer">
-			<p class="intro">You should try to...</p>
-			<h2>Enjoy yourself!</h2>
+			<div class="flex">
+				<p class="intro">You should try to...</p>
+				<button id="todo-done">Finished!</button>
+			</div>
+			<h2><span class="message">Enjoy yourself</span><span class="suffix"></span></h2>
 			<div class="data" hidden>
 				<p class="date">
 					<strong>Due:</strong> <span class="data"></span>
@@ -69,7 +70,13 @@
 		<hr />
 		<div id="nice-viewer">
 			<p class="intro">Oh, by the way...</p>
-			<h2>You're on the right path to building healthy habits</h2>
+			<h2>
+				<span class="message">You're on the right path to building healthy habits</span>
+				<span class="suffix">!</span>
+			</h2>
+		</div>
+		<div id="status-box">
+			<p id="status-message"></p>
 		</div>
 	</main>
 	<aside class="controls">

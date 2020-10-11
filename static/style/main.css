@@ -82,6 +82,30 @@ label {
   margin: 0.125rem 0;
 }
 
+#todo-viewer div.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+#todo-done {
+  background: var(--yellow-medium);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  color: var(--brown-medium);
+  font-size: 0.9rem;
+  font-family: var(--ff-signika);
+  padding: 0.5rem;
+}
+
+#todo-done:focus,
+#todo-done:hover {
+  border: 2px solid var(--blue-medium);
+}
+
+#todo-done:active {
+  background: var(--blue-light);
+}
+
 h2 {
   color: var(--brown-dark);
   font-family: var(--ff-script);

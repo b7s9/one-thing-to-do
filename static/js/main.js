@@ -1,15 +1,26 @@
 // --------------------------------------------
 // VARIABLES
-const todoMessage = document.querySelector("#todo-viewer h2");
+const todoMessage = document.querySelector("#todo-viewer h2 span.message");
 const todoDate = document.querySelector("#todo-viewer div.data .date span.data");
 const todoPriority = document.querySelector("#todo-viewer div.data .priority span.data");
-const niceMessage = document.querySelector("#nice-viewer h2");
+const niceMessage = document.querySelector("#nice-viewer h2 span.message");
 const refreshBtn = document.querySelector("#refresh-btn");
+const doneBtn = document.querySelector("#todo-done");
+const statusMessage = document.getElementById('status-message');
 
 let todoData = []
 let niceData = []
 const todoIndexStorageName = 'todoData'
 const niceIndexStorageName = 'niceData'
+
+let currentData = {
+	todo: { title: `Enjoy yourself`, priority: '0', date: '', index: -1 },
+	nice: { message: `You're on the right path to building healthy habits`, index: -1 },
+}
+let defaultData = {
+	todo: { title: `Enjoy yourself`, priority: '0', date: '', index: -1 },
+	nice: { message: `You're on the right path to building healthy habits`, index: -1 },
+}
 
 // --------------------------------------------
 // VIEW CONTROLLER
@@ -40,8 +51,8 @@ async function initDb() {
 			niceData = []
 		}
 		// if output is blank, they are empty arrays
-		console.log('todo: ' + todoData)
-		console.log('nice: ' + niceData)
+		// console.log(todoData)
+		// console.log(niceData)
 	} catch (err) {
 		console.log(err);
 	}
@@ -53,7 +64,6 @@ let todoLoadSuccess = false;
 let niceLoadSuccess = false;
 
 localforage.getItem(todoIndexStorageName).then((data) => {
-	console.log(data); // JSON data parsed by `data.json()` call
 	todoData = data;
 	todoLoadSuccess = true;
 	todoLoadSuccess && niceLoadSuccess && displayData(pickRandomData())
@@ -62,7 +72,6 @@ localforage.getItem(todoIndexStorageName).then((data) => {
 });
 
 localforage.getItem(niceIndexStorageName).then((data) => {
-	console.log(data); // JSON data parsed by `data.json()` call
 	niceData = data;
 	niceLoadSuccess = true;
 	todoLoadSuccess && niceLoadSuccess && displayData(pickRandomData())
@@ -70,15 +79,52 @@ localforage.getItem(niceIndexStorageName).then((data) => {
 	console.log(err);
 });
 
+/**
+ * Pick ran
+ */
 function pickRandomData() {
-	const todo = getRandomItemInArray(todoData)
-	const nice = getRandomItemInArray(niceData)
+	// console.log(defaultData)
+	// console.log(currentData)
+
+	let returnObj = {}
+	let todo, nice;
+	let todoExists, niceExists;
+	todoExists = niceExists = false;
+
+	if (todoData.length > 0) {
+		todoExists = true;
+		todo = getRandomItemInArray(todoData)
+		currentData.todo = {
+			title: todo.item.title,
+			date: todo.item.date,
+			priority: todo.item.priority,
+			index: todo.index
+		}
+	}
+
+	if (niceData.length > 0) {
+		niceExists = true
+		nice = getRandomItemInArray(niceData)
+		currentData.nice = {
+			message: nice.item,
+			index: nice.index
+		}
+	}
+
+	if (!todoExists && !niceExists) {
+		return {
+			title: defaultData.todo.title,
+			date: defaultData.todo.date,
+			priority: defaultData.todo.priority,
+			message: defaultData.nice.message
+		}
+	}
 
 	return {
-		title: todo.title,
-		date: todo.date,
-		priority: todo.priority,
-		message: nice
+		title: currentData.todo.title,
+		date: currentData.todo.date,
+		priority: currentData.todo.priority,
+		message: currentData.nice.message
 	}
 }
 
@@ -90,9 +136,32 @@ refreshBtn.addEventListener('click', (e) => {
 	todoLoadSuccess && niceLoadSuccess && displayData(pickRandomData())
 })
 
+doneBtn.addEventListener('click', (e) => {
+	e.preventDefault();
+	if (todoData.length < 1) return false;
+	// remove the currently shown todo item
+	// console.log(todoData[currentData.todo.index])
+	todoData.splice(currentData.todo.index, 1)
+	// console.log(todoData)
+	localforage.setItem(todoIndexStorageName, todoData)
+
+	todoLoadSuccess && niceLoadSuccess && displayData(pickRandomData())
+
+	statusMessage.innerText = 'Todo item deleted'
+	statusMessage.classList.add('success')
+	setTimeout(() => {
+		statusMessage.innerText = ''
+	}, 6000);
+})
+
 // --------------------------------------------
 // UTITLITIES
 // --------------------------------------------
 function getRandomItemInArray(arr) {
-	return arr[Math.floor(Math.random() * arr.length)];
+	// return arr[Math.floor(Math.random() * arr.length)];
+	const i = Math.floor(Math.random() * arr.length)
+	return {
+		item: arr[i],
+		index: i
+	};
 }

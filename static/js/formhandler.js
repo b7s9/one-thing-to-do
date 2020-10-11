@@ -62,8 +62,8 @@ async function initDb() {
 			niceData = []
 		}
 		// if output is blank, they are empty arrays
-		console.log('todo: ' + todoData)
-		console.log('nice: ' + niceData)
+		// console.log('todo: ' + todoData)
+		// console.log('nice: ' + niceData)
 	} catch (err) {
 		console.log(err);
 	}
@@ -92,7 +92,7 @@ const writeData = (formData) => {
 		console.log('todo data2: ' + todoData)
 		localforage.setItem(todoIndexStorageName, todoData).then((todoData) => {
 			todoWriteSuccess = true;
-			niceWriteSuccess && todoWriteSuccess && resolve('Data saved successfully')
+			niceWriteSuccess && todoWriteSuccess && resolve('Saved!')
 		}).catch(function (err) {
 			// This code runs if there were any errors
 			reject(err)
@@ -101,7 +101,7 @@ const writeData = (formData) => {
 		niceData.push(nice)
 		localforage.setItem(niceIndexStorageName, niceData).then((niceData) => {
 			niceWriteSuccess = true;
-			niceWriteSuccess && todoWriteSuccess && resolve('Data saved successfully')
+			niceWriteSuccess && todoWriteSuccess && resolve('Saved!')
 		}).catch(function (err) {
 			// This code runs if there were any errors
 			reject(err)
