@@ -33,7 +33,10 @@ This project is a webapp that requires you to say something nice about yourself 
 
 1. Add 3 or more entries
 1. Refresh viewer until you have seen all entries
-1. Remove a todo item
+1. Complete a todo item
+
+Complete [Usability Test questionnaire](https://docs.google.com/forms/d/e/1FAIpQLScwgKh6z9LXlYPnb7oxlt5yocrpOeA9zPlJ0tobW3YQEX3vzw/viewform)
+
 
 ## Developer Installation
 
