@@ -170,7 +170,7 @@ textarea,
 input,
 select {
   background: var(--yellow-medium);
-  border: none;
+  border: 2px solid transparent;
   border-radius: 10px;
   color: var(--brown-dark);
   font-family: var(--ff-script);
@@ -181,8 +181,15 @@ select {
   width: 100%;
 }
 
+textarea:focus,
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--blue-medium);
+}
+
 textarea:valid {
-  border: 2px solid green;
+  border-color: green;
 }
 
 input[type='submit'] {
@@ -201,15 +208,6 @@ input[type='submit']:focus {
 
 select {
   appearance: none;
-}
-
-select + div.icon {
-  background: url(./ui/dropdown.svg) no-repeat center center;
-  position: absolute;
-  height: 2.25rem;
-  width: 2.25rem;
-  right: 2rem;
-  margin-top: -3rem;
 }
 
 @media screen and (min-width: 480px) {

@@ -3,6 +3,8 @@
 // --------------------------------------------
 const form = document.getElementById("new-entry");
 const dateField = document.getElementById('todo-date');
+const statusBox = document.getElementById('status-box');
+const statusMessage = document.getElementById('status-message');
 // index of all hashes for data
 // let todoIndex = []
 // let niceIndex = []
@@ -45,17 +47,19 @@ dateField.value = getWeekFromToday();
 // 	})
 // }
 
-// get hash list. if none exists, create it
-async function initDb(todoData, niceData) {
+// get database. if none exists, create it
+async function initDb() {
 	try {
-		const todoData = await localforage.getItem(todoIndexStorageName);
-		const niceData = await localforage.getItem(niceIndexStorageName);
+		todoData = await localforage.getItem(todoIndexStorageName);
+		niceData = await localforage.getItem(niceIndexStorageName);
 
-		if (todoData === null) {
+		if (todoData === null || todoData === typeof 'undefined') {
 			localforage.setItem(todoIndexStorageName, [])
+			todoData = []
 		}
-		if (niceData === null) {
+		if (niceData === null || niceData === typeof 'undefined') {
 			localforage.setItem(niceIndexStorageName, [])
+			niceData = []
 		}
 		// if output is blank, they are empty arrays
 		console.log('todo: ' + todoData)
@@ -65,36 +69,44 @@ async function initDb(todoData, niceData) {
 	}
 
 }
-initDb(todoData, niceData)
+initDb()
 
 /**
  * 
  * @param {FormData} formData 
  */
 const writeData = (formData) => {
-	const hash = generateHash()
-	const todo = {
-		title: formData.get('todo-title'),
-		date: formData.get('todo-date'),
-		priority: formData.get('todo-priority')
-	};
-	const nice = formData.get('nice-comment')
+	return new Promise((resolve, reject) => {
+		let todoWriteSuccess = false;
+		let niceWriteSuccess = false;
+		const hash = generateHash()
+		const todo = {
+			title: formData.get('todo-title'),
+			date: formData.get('todo-date'),
+			priority: formData.get('todo-priority')
+		};
+		const nice = formData.get('nice-comment')
 
-	todoData.push(todo)
-	localforage.setItem(todoIndexStorageName, todoData).then((todoData) => {
-		console.log('saved data: ' + todoData)
-	}).catch(function (err) {
-		// This code runs if there were any errors
-		console.log(err);
-	});
+		console.log('todo data: ' + todoData)
+		todoData.push(todo)
+		console.log('todo data2: ' + todoData)
+		localforage.setItem(todoIndexStorageName, todoData).then((todoData) => {
+			todoWriteSuccess = true;
+			niceWriteSuccess && todoWriteSuccess && resolve('Data saved successfully')
+		}).catch(function (err) {
+			// This code runs if there were any errors
+			reject(err)
+		});
 
-	niceData.push(nice)
-	localforage.setItem(niceIndexStorageName, niceData).then((niceData) => {
-		console.log('saved data: ' + niceData)
-	}).catch(function (err) {
-		// This code runs if there were any errors
-		console.log(err);
-	});
+		niceData.push(nice)
+		localforage.setItem(niceIndexStorageName, niceData).then((niceData) => {
+			niceWriteSuccess = true;
+			niceWriteSuccess && todoWriteSuccess && resolve('Data saved successfully')
+		}).catch(function (err) {
+			// This code runs if there were any errors
+			reject(err)
+		});
+	})
 }
 
 
@@ -111,7 +123,22 @@ form.addEventListener('submit', (e) => {
 	e.preventDefault()
 	let data = new FormData(form)
 	// validateForm(data)
-	writeData(data)
+	writeData(data).then(message => {
+		form.reset()
+		statusMessage.innerText = message
+		statusMessage.classList.remove('danger')
+		statusMessage.classList.add('success')
+		// statusBox.hidden = false
+		setTimeout(() => {
+			statusMessage.innerText = ''
+		}, 6000);
+	}).catch(message => {
+		console.log(message)
+		statusMessage.innerText = message
+		statusMessage.classList.remove('success')
+		statusMessage.classList.add('danger')
+		// statusBox.hidden = false
+	})
 })
 
 // --------------------------------------------

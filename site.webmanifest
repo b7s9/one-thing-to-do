@@ -1,20 +1,22 @@
 {
-	"name": "One Thing to Do",
-	"short_name": "One Thing",
-	"scope": "/",
-	"start_url": "https://b7s9.com/ottd",
-	"description": "Reimagine your todo list",
-	"orientation": "any",
-	"icons": [{
-		"src": "/favicon.ico/android-chrome-192x192.png",
-		"sizes": "192x192",
-		"type": "image/png"
-	}, {
-		"src": "/favicon.ico/android-chrome-512x512.png",
-		"sizes": "512x512",
-		"type": "image/png"
-	}],
-	"theme_color": "#ffffff",
-	"background_color": "#ffffff",
-	"display": "standalone"
+  "name": "One Thing to Do",
+  "short_name": "One Thing",
+  "start_url": "./",
+  "description": "Reimagine your todo list",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./favicon.ico/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./favicon.ico/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
 }
