@@ -33,7 +33,7 @@ nav a {
 
 nav .logo a,
 nav .credits a {
-  color: var(--blue-dark)
+  color: var(--blue-dark);
 }
 
 main {
@@ -47,10 +47,11 @@ a {
   background-position: 0 100%;
   background-repeat: no-repeat;
   background-size: 0 1px;
-  transition: background-size .4s;
+  transition: background-size 0.4s;
 }
 
-a:hover {
+a:hover,
+a:focus {
   background-size: 100% 1px;
 }
 
@@ -79,6 +80,30 @@ label {
   font-size: 1rem;
   font-weight: 300;
   margin: 0.125rem 0;
+}
+
+#todo-viewer div.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+#todo-done {
+  background: var(--yellow-medium);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  color: var(--brown-medium);
+  font-size: 0.9rem;
+  font-family: var(--ff-signika);
+  padding: 0.5rem;
+}
+
+#todo-done:focus,
+#todo-done:hover {
+  border: 2px solid var(--blue-medium);
+}
+
+#todo-done:active {
+  background: var(--blue-light);
 }
 
 h2 {
@@ -169,7 +194,7 @@ textarea,
 input,
 select {
   background: var(--yellow-medium);
-  border: none;
+  border: 2px solid transparent;
   border-radius: 10px;
   color: var(--brown-dark);
   font-family: var(--ff-script);
@@ -180,7 +205,18 @@ select {
   width: 100%;
 }
 
-input[type="submit"] {
+textarea:focus,
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--blue-medium);
+}
+
+textarea:valid {
+  border-color: green;
+}
+
+input[type='submit'] {
   color: var(--blue-dark);
   cursor: pointer;
   font-family: var(--ff-signika);
@@ -189,8 +225,8 @@ input[type="submit"] {
   transition: background-color 95ms ease-in-out;
 }
 
-input[type="submit"]:hover,
-input[type="submit"]:focus {
+input[type='submit']:hover,
+input[type='submit']:focus {
   background: var(--blue-light);
 }
 
@@ -198,17 +234,27 @@ select {
   appearance: none;
 }
 
-select+div.icon {
-  background: url(./ui/dropdown.svg) no-repeat center center;
-  position: absolute;
-  height: 2.25rem;
-  width: 2.25rem;
-  right: 2rem;
-  margin-top: -3rem;
-}
-
 @media screen and (min-width: 480px) {
-  select+div.icon {
+  select + div.icon {
     display: none;
   }
+}
+
+#status-message.danger {
+  color: red;
+}
+
+#status-message.success {
+  color: green;
+}
+
+#status-box {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+#status-box a {
+  color: var(--blue-dark);
+  text-decoration: none;
 }
