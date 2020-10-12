@@ -54,4 +54,4 @@ if you haven't already done so, install [node/npm LTS](https://nodejs.org/en/)
 1. clone this project locally
 1. switch into this project's directory
 1. install this project's dependencies
-1. start the development server, available on http://localhost:3000
+1. start the development server, available on http://localhost:8080
