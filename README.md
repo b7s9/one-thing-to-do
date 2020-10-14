@@ -39,10 +39,10 @@ This project is a webapp that requires you to say something nice about yourself 
 
 ## Developer Installation
 
-Progressive Web Apps must be served over https, so you will need to serve the project on localhost, as opposed to just opening `index.html` in your browser. I've included an npm package for your convenience, or you can use your own e.g. MAMP.
+Progressive Web Apps must be served over https, so you will need to serve the project on localhost, as opposed to just opening `index.html` in your browser. I've been developing the project with the included an npm package, but you can skip the npm install and use your own localhost server e.g. MAMP if you're feeling rebellious. Note: in the Beta, I'll likely be adding webpack and other npm packages, so i'd recommend the npm install.
 
 ```bash
-git clone https://b7s9/one-thing-to-do.git
+git clone https://github.com/b7s9/one-thing-to-do.git
 cd one-thing-to-do
 npm install
 npm start
