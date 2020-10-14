@@ -1,7 +1,6 @@
 # One Thing to Do
 
 ![index.html page](https://user-images.githubusercontent.com/19176695/94201425-f73a7700-fe89-11ea-84aa-aeb611f2e8c4.png)
-![add.html page](https://user-images.githubusercontent.com/19176695/94201428-f9043a80-fe89-11ea-9410-994ac2cd5500.png)
 
 ## Problem
 
@@ -35,7 +34,7 @@ This project is a webapp that requires you to say something nice about yourself 
 1. Refresh viewer until you have seen all entries
 1. Complete a todo item
 
-Complete [Usability Test questionnaire](https://docs.google.com/forms/d/e/1FAIpQLScwgKh6z9LXlYPnb7oxlt5yocrpOeA9zPlJ0tobW3YQEX3vzw/viewform)
+~~Complete Usability Test questionnaire~~ Alpha usability testing is complete. Submissions closed until Beta is ready for testing. You can read my analysis of the Alpha test on [my blog](https://blog.b7s9.com/home/ottd-alpha-feedback)
 
 
 ## Developer Installation
@@ -43,7 +42,7 @@ Complete [Usability Test questionnaire](https://docs.google.com/forms/d/e/1FAIpQ
 Progressive Web Apps must be served over https, so you will need to serve the project on localhost, as opposed to just opening `index.html` in your browser. I've included an npm package for your convenience, or you can use your own e.g. MAMP.
 
 ```bash
-git clone git@github.com:b7s9/one-thing-to-do.git
+git clone https://b7s9/one-thing-to-do.git
 cd one-thing-to-do
 npm install
 npm start
