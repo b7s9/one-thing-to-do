@@ -1,6 +1,6 @@
 {
   "name": "one-thing-to-do",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.html",
   "scripts": {
@@ -17,6 +17,9 @@
     "url": "https://github.com/b7s9/one-thing-to-do/issues"
   },
   "homepage": "https://github.com/b7s9/one-thing-to-do#readme",
+  "browserslist": [
+    "defaults"
+  ],
   "dependencies": {},
   "devDependencies": {
     "http-server": "^0.12.3"

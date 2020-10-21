@@ -104,7 +104,7 @@ function pickRandomData() {
 
 	if (niceData.length > 0) {
 		niceExists = true
-		nice = getRandomItemInArray(niceData)
+		nice = getRandomItemInArray(niceData, 'nice')
 		currentData.nice = {
 			message: nice.item,
 			index: nice.index
@@ -157,9 +157,17 @@ doneBtn.addEventListener('click', (e) => {
 // --------------------------------------------
 // UTITLITIES
 // --------------------------------------------
-function getRandomItemInArray(arr) {
-	// return arr[Math.floor(Math.random() * arr.length)];
+function getRandomItemInArray(arr, type = 'todo') {
 	const i = Math.floor(Math.random() * arr.length)
+	if (type === 'todo') {
+		if (i === currentData.todo.index) {
+			return getRandomItemInArray(arr)
+		}
+	} else if (type === 'nice') {
+		if (i === currentData.nice.index) {
+			return getRandomItemInArray(arr, 'nice')
+		}
+	}
 	return {
 		item: arr[i],
 		index: i
