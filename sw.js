@@ -5,7 +5,6 @@ self.addEventListener('install', (event) => {
 	event.waitUntil(
 		caches.open(version).then((cache) => {
 			return cache.addAll([
-				'./',
 				'./index.html',
 				'./add.html',
 				'./offline.html',
@@ -19,6 +18,7 @@ self.addEventListener('install', (event) => {
 				'./static/js/main.js',
 				'./static/js/localforage.min.js',
 				'./static/style/main.css',
+				'./static/style/minireset.css',
 				'./static/style/_fonts.css',
 				'./static/style/_variables.css',
 				'./static/style/fonts/HanziPenSC-W3-Proportional.woff',
