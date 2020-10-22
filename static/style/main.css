@@ -55,6 +55,13 @@ a:focus {
   background-size: 100% 1px;
 }
 
+div.banner {
+  background-color: #eee;
+  display: block;
+  height: 20vh;
+  width: 100vw;
+}
+
 /************************************************/
 /* VIEWER */
 /************************************************/
@@ -92,6 +99,7 @@ label {
   border: 2px solid transparent;
   border-radius: 10px;
   color: var(--brown-medium);
+  cursor: pointer;
   font-size: 0.9rem;
   font-family: var(--ff-signika);
   padding: 0.5rem;

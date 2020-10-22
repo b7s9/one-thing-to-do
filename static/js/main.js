@@ -86,7 +86,6 @@ function pickRandomData() {
 	// console.log(defaultData)
 	// console.log(currentData)
 
-	let returnObj = {}
 	let todo, nice;
 	let todoExists, niceExists;
 	todoExists = niceExists = false;
@@ -160,11 +159,11 @@ doneBtn.addEventListener('click', (e) => {
 function getRandomItemInArray(arr, type = 'todo') {
 	const i = Math.floor(Math.random() * arr.length)
 	if (type === 'todo') {
-		if (i === currentData.todo.index) {
+		if (todoData.length > 1 && i === currentData.todo.index) {
 			return getRandomItemInArray(arr)
 		}
 	} else if (type === 'nice') {
-		if (i === currentData.nice.index) {
+		if (niceData.length > 1 && i === currentData.nice.index) {
 			return getRandomItemInArray(arr, 'nice')
 		}
 	}
