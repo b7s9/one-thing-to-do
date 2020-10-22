@@ -5,6 +5,7 @@ self.addEventListener('install', (event) => {
 	event.waitUntil(
 		caches.open(version).then((cache) => {
 			return cache.addAll([
+				'./',
 				'./index.html',
 				'./add.html',
 				'./offline.html',
