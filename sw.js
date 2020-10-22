@@ -1,4 +1,5 @@
-const version = '0.1.1';
+const appName = 'one-thing-to-do'
+const version = appName + '-' + 'v0.1.2';
 
 self.addEventListener('install', (event) => {
 	event.waitUntil(
