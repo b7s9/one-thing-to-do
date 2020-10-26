@@ -1,4 +1,5 @@
-const version = '0.1.1';
+const appName = 'one-thing-to-do'
+const version = appName + '-' + 'v0.1.2';
 
 self.addEventListener('install', (event) => {
 	event.waitUntil(
@@ -18,6 +19,7 @@ self.addEventListener('install', (event) => {
 				'./static/js/main.js',
 				'./static/js/localforage.min.js',
 				'./static/style/main.css',
+				'./static/style/minireset.css',
 				'./static/style/_fonts.css',
 				'./static/style/_variables.css',
 				'./static/style/fonts/HanziPenSC-W3-Proportional.woff',
