@@ -9,28 +9,23 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="favicon.ico/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon.ico/favicon-16x16.png">
-	<link rel="manifest" href="site.webmanifest">
-
-	<!-- required js -->
-	<script src="static/js/localforage.min.js"></script>
+	<!-- <link rel="manifest" href="site.webmanifest"> -->
 
 	<script>
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('/service-worker.js')
-				.then((reg) => {
-					// registration worked
-					console.log('Registration succeeded. Scope is ' + reg.scope);
-				}).catch((error) => {
-					// registration failed
-					console.log('Registration failed with ' + error);
-				});
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/service-worker.js')
+					.then((reg) => {
+						// registration worked
+						console.log('Registration succeeded. Scope is ' + reg.scope);
+					}).catch((error) => {
+						// registration failed
+						console.log('Registration failed with ' + error);
+					});
+			});
 		}
 
 	</script>
-
-	<!-- style  -->
-	<link rel="stylesheet" href="static/style/minireset.min.css" />
-	<link rel="stylesheet" href="static/style/main.css" />
 
 </head>
 
@@ -150,7 +145,6 @@
 		</div>
 	</aside>
 
-	<script src="static/js/main.js"></script>
 </body>
 
 </html>

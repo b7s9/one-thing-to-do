@@ -8,6 +8,11 @@ module.exports = merge(common, {
 	plugins: [
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('development')
-		})
+		}),
+		// new GenerateSW({
+		// 	cacheId: 'one-thing-to-do',
+		// 	cleanupOutdatedCaches: false,
+		// 	sourcemap: true
+		// })
 	]
 });

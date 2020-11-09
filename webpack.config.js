@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { GenerateSW } = require('workbox-webpack-plugin');
+const { GenerateSW, InjectManifest } = require('workbox-webpack-plugin');
 
 module.exports = {
 	devServer: {
@@ -28,20 +28,30 @@ module.exports = {
 					'css-loader',
 				],
 			},
+			{
+				test: /\.(png|svg|jpg|gif|ico|woff|woff2|eot|ttf|otf)$/,
+				use: [
+					'file-loader',
+				],
+			},
 		],
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			chunks: ['add'], // which entry point to use
-			filename: 'screens/add.html', // where/what to output
+			filename: 'add.html', // where/what to output
 			template: path.join(__dirname, 'src/screens', 'add.html') // source file
 		}),
 		new HtmlWebpackPlugin({
 			chunks: ['index'],
-			filename: 'screens/index.html',
+			filename: 'index.html',
 			template: path.join(__dirname, 'src/screens', 'index.html')
 		}),
-		new GenerateSW()
+		new GenerateSW({
+			cacheId: 'one-thing-to-do',
+			cleanupOutdatedCaches: true,
+			sourcemap: true
+		})
 	]
 };
