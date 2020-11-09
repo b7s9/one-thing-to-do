@@ -14,9 +14,9 @@
 	<!-- required js -->
 	<script src="static/js/localforage.min.js"></script>
 
-	<!-- <script>
+	<script>
 		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker.register('./sw.js')
+			navigator.serviceWorker.register('./service-worker.js')
 				.then((reg) => {
 					// registration worked
 					console.log('Registration succeeded. Scope is ' + reg.scope);
@@ -26,15 +26,7 @@
 				});
 		}
 
-	</script> -->
-
-	<!-- <script>
-      if (!navigator.serviceWorker.controller) {
-        navigator.serviceWorker.register("/sw.js").then(function (reg) {
-          console.log("Service worker has been registered for scope: " + reg.scope);
-        });
-      }
-    </script> -->
+	</script>
 
 	<!-- style  -->
 	<link rel="stylesheet" href="static/style/minireset.min.css" />

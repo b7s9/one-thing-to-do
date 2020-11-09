@@ -1,6 +1,8 @@
 // --------------------------------------------
 // VARIABLES
 // --------------------------------------------
+import localforage from 'localforage';
+
 const form = document.getElementById("new-entry");
 const dateField = document.getElementById('todo-date');
 const statusBox = document.getElementById('status-box');

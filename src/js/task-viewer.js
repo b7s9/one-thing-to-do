@@ -1,5 +1,7 @@
 // --------------------------------------------
 // VARIABLES
+import localforage from 'localforage';
+
 const todoMessage = document.querySelector("#todo-viewer h2 span.message");
 const todoDate = document.querySelector("#todo-viewer div.data .date span.data");
 const todoPriority = document.querySelector("#todo-viewer div.data .priority span.data");
