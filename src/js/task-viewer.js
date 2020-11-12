@@ -1,3 +1,7 @@
+import '../style/clippy.css'
+import clippy from './clippy'
+import './agents/Rover/agent'
+
 // --------------------------------------------
 // VARIABLES
 import localforage from 'localforage';
@@ -132,10 +136,15 @@ function pickRandomData() {
 // --------------------------------------------
 // EVENT HANDLERS
 // --------------------------------------------
-refreshBtn.addEventListener('click', (e) => {
-	e.preventDefault();
-	todoLoadSuccess && niceLoadSuccess && displayData(pickRandomData())
-})
+clippy.load('Rover', function (agent) {
+	agent.show();
+
+	refreshBtn.addEventListener('click', (e) => {
+		e.preventDefault();
+		todoLoadSuccess && niceLoadSuccess && displayData(pickRandomData())
+		agent.play('Congratulate')
+	})
+});
 
 doneBtn.addEventListener('click', (e) => {
 	e.preventDefault();
